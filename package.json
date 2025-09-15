@@ -1,0 +1,25 @@
+{
+  "name": "ottawa-native-plant-app",
+  "version": "1.0.0",
+  "description": "An application to be used by community members to share various types of resources",
+  "keywords": [
+    "ottawa",
+    "native",
+    "plants",
+    "gardening"
+  ],
+  "homepage": "https://github.com/jennasaikaly/ottawa-native-plant-app#readme",
+  "bugs": {
+    "url": "https://github.com/jennasaikaly/ottawa-native-plant-app/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jennasaikaly/ottawa-native-plant-app.git"
+  },
+  "license": "MIT",
+  "author": "Jenna Saikaly",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
