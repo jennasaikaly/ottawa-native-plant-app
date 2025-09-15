@@ -5,7 +5,12 @@ const sequelize = require('../config/connection');
 const bcrypt = require('bcrypt');
 
 //create our User model
-class User extends Model {}
+class User extends Model {
+    // pass method to check passwords match
+    checkPassword(loginPw) {
+        return bcrypt.compareSync(loginPw, this.password);
+    }
+}
 
 // define table columns and configuration
 User  // set up before creating "hook" functionality
