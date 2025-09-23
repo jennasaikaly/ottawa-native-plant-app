@@ -102,10 +102,20 @@ router.post('/login', (req, res) => {
             req.session.loggedIn = true;
 
             res.json({ user: dbUserData, message: 'You are now logged in!' });
-        });
-
+            });
         });
     })
+
+router.post('/logout', (req, res) => {
+    if(req.session.loggedIn) {
+        req.session.destroy(() => {
+            res.status(204).end();
+        });    
+    }
+    else {
+        res.status(404).end();
+    }
+});
 
 //PUT /api/users/1
 router.put('/:id', (req, res) => {
