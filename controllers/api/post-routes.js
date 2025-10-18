@@ -108,36 +108,55 @@ router.post('/', (req, res) => {
     });
 });
 
+
 // PUT /api/posts/upvote
 router.put('/upvote', (req, res) => {
-    Vote.create({
-  user_id: req.body.user_id,
-  post_id: req.body.post_id
-})
-    .then(() => {
-        // then find the post we just voted on
-        return Post.findOne({
-            where: {
-                id: req.body.post_id
-            },
-            attributes: [
-                'id',
-                'post_text',
-                'post_url',
-                'title',
-                'created_at',
-                // use raw MySQL aggregate function query to get a count of how many votes the post has and return it under the name `vote_count`
-                [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'),
-        'vote_count']
-            ]
-        })    
-    })
-    .then(dbPostData => res.json(dbPostData))
-    .catch(err => {
+  // make sure the session exists first
+  if (req.session) {
+    // pass session id along with all destructured properties on req.body
+    Vote.create({ ...req.body, user_id: req.session.user_id }, { Vote, Comment, User })
+      .then(updatedVoteData => res.json(updatedVoteData))
+      .catch(err => {
         console.log(err);
-        res.status(400).json(err);
-    });
+        res.status(500).json(err);
+      });
+  }
 });
+
+//UPVOTING ROUTE FOR POSTS
+//THIS WORKS PRIOR TO adding session and refactoring
+// PUT /api/posts/upvote
+// router.put('/upvote', (req, res) => {
+//     console.log(req.body.user_id)
+//     Vote.create({
+        
+//         user_id: req.body.user_id,
+//         post_id: req.body.post_id
+// })
+//     .then(() => {
+//         // then find the post we just voted on
+//         return Post.findOne({
+//             where: {
+//                 id: req.body.post_id
+//             },
+//             attributes: [
+//                 'id',
+//                 'post_text',
+//                 'post_url',
+//                 'title',
+//                 'created_at',
+//                 // use raw MySQL aggregate function query to get a count of how many votes the post has and return it under the name `vote_count`
+//                 [sequelize.literal('(SELECT COUNT(*) FROM vote WHERE post.id = vote.post_id)'),
+//         'vote_count']
+//             ]
+//         })    
+//     })
+//     .then(dbPostData => res.json(dbPostData))
+//     .catch(err => {
+//         console.log(err);
+//         res.status(400).json(err);
+//     });
+// });
 
 //PUT route for Posts
 router.put('/:id', (req, res) => {
