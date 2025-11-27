@@ -14,7 +14,11 @@ function format_plural(word, amount){
         return word;
     }
 }
-module.exports = { format_date, format_plural }
+
+function url_format(website){
+  return website.replace("www.", "")
+}
+module.exports = { format_date, format_plural, url_format}
 
 // this also works (2 functions)
 // module.exports = {
