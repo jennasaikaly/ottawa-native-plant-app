@@ -12,6 +12,11 @@ test('format_plural correctly adds an s to any number other than 1', () => {
 })
 
 test('url_format removes "www." from website url', () => {
-    const website = "www.freecodecamp.com";
-    expect(url_format(website)).toBe("freecodecamp.com");
+    const url1 = url_format('http://test.com/page/1');
+    const url2 = url_format('https://www.coolstuff.com/abcdefg/');
+    const url3 = url_format('https://www.google.com?q=hello');
+
+    expect(url1).toBe('test.com');
+    expect(url2).toBe('coolstuff.com');
+    expect(url3).toBe('google.com');
 })
