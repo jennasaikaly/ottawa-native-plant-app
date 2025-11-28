@@ -1,0 +1,38 @@
+
+
+<article>
+  <a href="/dashboard"> &larr; Back to dashboard</a>
+  <h2>
+    Edit Post
+    </h2>
+  <form class="edit-post-form">
+    <div>
+      <input name="edit-post-title" type="text" value="{{post.title}}" /> 
+      <span>({{url_format post.post_url}})</span>
+      
+    </div>
+    {{!-- <div>
+            <label for="edit-post-url">Link</label>
+            <input id="edit-post-url" name="edit-post-url" value="{{post.post_url}}" />
+            <span>({{url_format post.post_url}})</span>
+        </div> --}}
+    <div>
+      {{!-- <div>
+            <label for="edit-post-body">Post:</label>
+            <textarea name="edit-post-body"> {{ post.post_text}} </textarea>
+        </div> --}}
+      {{post.vote_count}} {{format_plural "point" post.vote_count}} by you on {{format_date post.created_at}}
+      |
+      <a href="/post/{{post.id}}">{{post.comments.length}} {{format_plural "comment" post.comments.length}}</a>
+    </div>
+    <button type="submit" class="edit-post-btn">Save post</button>
+    <button type="button" class="delete-post-btn">Delete post</button>
+  </form>
+  </article>
+
+    {{> comments post.comments}}
+
+{{#if loggedIn}}
+    <script src="/javascript/edit-post.js"></script>
+    
+{{/if}} 
