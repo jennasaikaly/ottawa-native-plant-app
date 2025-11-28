@@ -161,13 +161,40 @@ router.put('/upvote', withAuth, (req, res) => {
 //     });
 // });
 
+//PUT route for Posts - this works for title only
+// router.put('/:id', withAuth, (req, res) => {
+    
+//     Post.update(
+//         {
+//         title: req.body.title
+//         },
+//         {
+//         where: {
+//             id: req.params.id
+//         }
+//         }
+//     )
+//         .then(dbPostData => {
+//         if (!dbPostData) {
+//             res.status(404).json({ message: 'No post found with this id' });
+//             return;
+//         }
+//         res.json(dbPostData);
+//         })
+//         .catch(err => {
+//         console.log(err);
+//         res.status(500).json(err);
+//         });
+// });
+
 //PUT route for Posts
 router.put('/:id', withAuth, (req, res) => {
     
     Post.update(
         {
-        title: req.body.title
-        },
+        title: req.body.title,
+        // post_url: req.body.post_url,
+                },
         {
         where: {
             id: req.params.id

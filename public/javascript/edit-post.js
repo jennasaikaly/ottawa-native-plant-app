@@ -21,6 +21,7 @@ async function editPostClickHandler(event) {
 });
 
 if (response.ok) {
+  alert("Your post has been updated!")
   document.location.replace('/dashboard')
   // document.location.reload();
   // document.location.replace(`/post/${id}`);
@@ -29,17 +30,32 @@ if (response.ok) {
 }
 }
 
-// async function deletePostClickHandler(event){
-// event.preventDefault(); 
+async function deletePostClickHandler(event){
+event.preventDefault(); 
 
-// const id = window.location.toString().split('/')[
-//     window.location.toString().split('/').length - 1
-//   ];
+const id = window.location.toString().split('/')[
+    window.location.toString().split('/').length - 1
+  ];
 
-// const response = await fetch('api/posts/')
+const response = await fetch(`/api/posts/${id}`, {
+    method: 'DELETE',
+    body: JSON.stringify({
+      id,    
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
+  if (response.ok) {
+  alert("Your post has been deleted!")
+  document.location.replace('/dashboard')
+  // document.location.reload();
+  // document.location.replace(`/post/${id}`);
+} else {
+  alert(response.statusText);
+}
 
-
-// }
+}
 
 document.querySelector('.edit-post-btn').addEventListener('click',editPostClickHandler);
-// document.querySelector('.delete-post-btn').addEventListener('click',deletePostClickHandler);
+document.querySelector('.delete-post-btn').addEventListener('click',deletePostClickHandler);
