@@ -95,17 +95,19 @@ router.get('/:id', (req, res) => {
 //Create post route
 router.post('/', (req, res) => {
   // expects {title: 'Ottawa Native Plant App goes public!', post_text: 'This is the first post!', post_url: 'https://nativeplantapp/post', user_id: 1}
-    Post.create({
+if (req.session){
+  Post.create({
         title: req.body.title,
         post_text: req.body.post_text,
         post_url: req.body.post_url,
-        user_id: req.body.user_id
+        user_id: req.session.user_id
     })
         .then(dbPostData => res.json(dbPostData))
         .catch(err => {
         console.log(err);
         res.status(500).json(err);
     });
+}
 });
 
 
