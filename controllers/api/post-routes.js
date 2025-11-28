@@ -1,6 +1,7 @@
 const sequelize = require('../../config/connection');
 const router = require('express').Router();
 const { Post, User, Vote, Comment } = require('../../models');
+const withAuth = require('../../utils/auth.js');
 
 
 // get all posts
@@ -93,7 +94,7 @@ router.get('/:id', (req, res) => {
 });
 
 //Create post route
-router.post('/', (req, res) => {
+router.post('/', withAuth, (req, res) => {
   // expects {title: 'Ottawa Native Plant App goes public!', post_text: 'This is the first post!', post_url: 'https://nativeplantapp/post', user_id: 1}
 if (req.session){
   Post.create({
@@ -112,7 +113,7 @@ if (req.session){
 
 
 // PUT /api/posts/upvote
-router.put('/upvote', (req, res) => {
+router.put('/upvote', withAuth, (req, res) => {
   // make sure the session exists first
   if (req.session) {
     // pass session id along with all destructured properties on req.body
@@ -161,7 +162,8 @@ router.put('/upvote', (req, res) => {
 // });
 
 //PUT route for Posts
-router.put('/:id', (req, res) => {
+router.put('/:id', withAuth, (req, res) => {
+    
     Post.update(
         {
         title: req.body.title
@@ -186,7 +188,7 @@ router.put('/:id', (req, res) => {
 });
 
 // DELETE route for Posts
-router.delete('/:id', (req, res) => {
+router.delete('/:id', withAuth, (req, res) => {
     Post.destroy({
         where: {
                 id: req.params.id
