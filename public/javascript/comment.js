@@ -25,6 +25,8 @@ async function commentFormHandler(event) {
         } else {
             alert(response.statusText);
         }
+    } else {
+        alert("You need to write something!")
     }
 }
 
