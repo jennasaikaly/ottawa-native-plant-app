@@ -23,7 +23,7 @@
     "test": "jest --coverage",
     "dev": "nodemon server.js"
   },
-  "start": "node server.js",
+  "start": "react-scripts start",
   "dependencies": {
     "bcrypt": "^6.0.0",
     "connect-session-sequelize": "^8.0.2",
@@ -37,6 +37,7 @@
   },
   "devDependencies": {
     "jest": "^30.2.0",
-    "nodemon": "^3.1.10"
+    "nodemon": "^3.1.10",
+    "vite-plugin-pwa": "^1.2.0"
   }
 }

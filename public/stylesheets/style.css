@@ -1,4 +1,4 @@
-* {
+/* * {
   box-sizing: border-box;
 }
 
@@ -15,11 +15,11 @@ a {
   color: #225ca3;
   font-weight: bold;
   transition: color .1s;
-}
+} */
 
-a:hover {
+/* a:hover {
   color: #3486eb;
-}
+} */
 
 button {
   background-color: #225ca3;
