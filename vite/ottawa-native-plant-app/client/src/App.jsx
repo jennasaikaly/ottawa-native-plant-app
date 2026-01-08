@@ -4,12 +4,14 @@
 import './App.css'
 import Footer from '/client/src/components/Footer.jsx'
 import Navbar from '/client/src/components/Navbar.jsx'
+import PostList from '/client/src/components/PostList.jsx'
 
 
 function App(){
   return(
     <>
       <Navbar />
+      <PostList />
       <Footer />
     </>
     
