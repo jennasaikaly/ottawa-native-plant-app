@@ -4,11 +4,11 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
+    "dev": "nodemon ./server/server.js",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview",
-    "start": "node ./server/server.js"
+    "start": "vite"
   },
   "dependencies": {
     "bcrypt": "^6.0.0",
