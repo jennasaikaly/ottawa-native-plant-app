@@ -1,7 +1,7 @@
 import { Schema, model } from 'mongoose';
 import validator from 'validator';
-// import bcrypt from 'bcrypt';
-// const saltRounds = 12;
+import bcrypt from 'bcrypt';
+
 
 const UserSchema = new Schema({
     
@@ -38,25 +38,22 @@ const UserSchema = new Schema({
         //     }, 
         //     message: 'Password must be at least 8 characters long and contain isUppercase, lowercase, numbers and symbols.'
         // }
-    }
+    },
+    createdAt: {
+        type: Date,
+        default: new Date()
+    },
+    posts: [{ 
+        type: Schema.Types.ObjectId,
+        ref: 'Post'
+    }]
+
 })
 
-// // Pre-save middleware to hash password
-// UserSchema.pre('save', async function(next) {
-//     console.log(this.password)
-//   // Only hash the password if it has been modified (or is new)
-//   if (!this.isModified('password')) return next();
-
-//   try {
-//     // Generate a salt and hash the password
-//     const salt = await bcrypt.genSalt(saltRounds);
-//     this.password = await bcrypt.hash(this.password, salt);
-//     console.log(this.password);
-//     next();
-//   } catch (error) {
-//     next(error);
-//   }
-// });
+// Pre-save middleware to hash password
+UserSchema.pre("save", async function() {
+    this.password = await bcrypt.hash(this.password, 12);
+})
 
 // // Instance method to compare password for login
 // UserSchema.methods.comparePassword = async function(candidatePassword) {

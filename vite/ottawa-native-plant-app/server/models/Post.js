@@ -10,8 +10,9 @@ const PostSchema = new Schema({
     post_text: {
         type: String
     },
-    createdBy: {
-        type: String
+    author: {
+        type: Schema.Types.ObjectId,
+        ref: 'User'
     }, 
     createdAt: {
         type: Date,
