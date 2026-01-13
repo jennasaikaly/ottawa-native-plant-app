@@ -1,4 +1,27 @@
 import { User } from '../models/index.js'
+import { createSecretToken } from '../utils/auth.js'
+import bcrypt from 'bcrypt';
+
+export const Signup = async (req, res, next) => {
+    try {
+        const { email, password, username, createdAt } = req.body;
+        const existingUser = await User.findOne({ email });
+        if(existingUser) {
+            return res.json({ message: "User already exists" });
+        }
+        const user = await User.create({ email, password, username, createdAt });
+        const token = createSecretToken(user._id);
+        res.cookie("token", token, {
+            withCredentials: true, 
+            httpOnly: false,
+        });
+        res.status(201)
+            .json({message: "User signed in successfully", success: true, user });
+            next();
+    }catch (error) {
+        console.error(error)
+    }
+}
 
 export const getAllUsers = (req, res) => {
     User.find({})
@@ -9,9 +32,9 @@ export const getAllUsers = (req, res) => {
         })        
 }
 
-    //CREATE POST 
-export const createUser = (req, res) => {
-    User.create(req.body)
-        .then(dbUserData => res.json(dbUserData))
-        .catch(err => res.status(400).json(err));
-}
+//     //CREATE USER
+// export const createUser = (req, res) => {
+//     User.create(req.body)
+//         .then(dbUserData => res.json(dbUserData))
+//         .catch(err => res.status(400).json(err));
+// }
