@@ -1,9 +1,10 @@
 import express from 'express';
 const router = express.Router();
-// import { userSignup } from '../../controllers/user.controller.js'
+// import { userSignup } from '../../controllers/AuthController.js'
 import { userLogin } from '../../controllers/user.controller.js'
 import { getAllUsers } from '../../controllers/user.controller.js'
-// import { userVerification } from '../../routes/home-routes.js'
+import { userSignup } from '../../controllers/user.controller.js'
+
 
 router
     .route('/')
@@ -20,13 +21,14 @@ router
     .route('/login')
     .post(userLogin)
 
+router
+    .route('/signup')
+    .post(userSignup)
+
 // router
 //     .route('/logout')
 //     .post(userLogout)
 
 // router.get('/', getAllUsers);
-
-
-// router.post('/', userVerification)
 
 export default router;

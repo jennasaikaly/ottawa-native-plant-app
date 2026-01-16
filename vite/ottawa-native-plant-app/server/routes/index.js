@@ -2,13 +2,13 @@ import { Router } from 'express'
 const router = Router();
 import apiRoutes from './api/index.js';
 // import authRoutes from './AuthRoutes.js'
-// import { userVerification } from './home-routes.js'
 import homeRoutes from './home-routes.js'
 import dashboardRoutes from './dashboard-routes.js'
 
 //collects the packaged group of api endpoints and prefixes them with the path /api
 router.use('/api', apiRoutes);
-// router.use('/', userVerification)
+// router.use('/signup', authRoutes)
+
 router.use('/', homeRoutes)
 router.use('/dashboard', dashboardRoutes);
 

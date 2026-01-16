@@ -4,7 +4,9 @@ import Footer from '/client/src/components/Footer.jsx'
 import Navbar from '/client/src/components/Navbar.jsx'
 import Homepage from './pages/Homepage.jsx'
 import Dashboard from './pages/Dashboard.jsx'
-import Login from './pages/Login.jsx'
+import Login from './pages/Login.jsx';
+import Signup from './pages/Signup.jsx'
+// import Login, { action as loginAction } from './pages/Login.jsx'
 import { Routes, Route } from 'react-router-dom'
 
 
@@ -19,7 +21,9 @@ function App(){
             <Routes>
               <Route path="/" element={<Homepage />} />
               <Route path="/dashboard" element={<Dashboard />} />
+              {/* <Route path="/login" element={<Login />} action={loginAction} /> */}
               <Route path="/login" element={<Login />} />
+              <Route path="/signup" element={<Signup />} />
             </Routes>
           </div>   
       
