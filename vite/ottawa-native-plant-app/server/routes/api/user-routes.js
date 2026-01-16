@@ -1,11 +1,32 @@
 import express from 'express';
 const router = express.Router();
-import { Signup } from '../../controllers/user.controller.js'
+// import { userSignup } from '../../controllers/user.controller.js'
+import { userLogin } from '../../controllers/user.controller.js'
 import { getAllUsers } from '../../controllers/user.controller.js'
-//  import { createUser }
+// import { userVerification } from '../../routes/home-routes.js'
 
-router.get('/', getAllUsers);
-// router.post('/', createUser);
-router.post("/", Signup)
+router
+    .route('/')
+    .get(getAllUsers)
+    // .post(userSignup) //create? should it have it's own route?
+
+router
+    .route('/:id')
+    // .get(getOneUser)
+    // .put(updateUser)
+    // .delete(deleteUser)
+
+router
+    .route('/login')
+    .post(userLogin)
+
+// router
+//     .route('/logout')
+//     .post(userLogout)
+
+// router.get('/', getAllUsers);
+
+
+// router.post('/', userVerification)
 
 export default router;

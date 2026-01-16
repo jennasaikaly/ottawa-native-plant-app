@@ -1,0 +1,56 @@
+import { Post } from '../models/index.js'
+import { User } from '../models/index.js'
+import { createSecretToken } from '../utils/auth.js'
+import bcrypt from 'bcrypt';
+
+export const Login = async (req, res, next) => {
+  try {
+    const { email, password } = req.body;
+    if(!email || !password ){
+      return res.json({message:'All fields are required'})
+    }
+    const user = await User.findOne({ email });
+    if(!user){
+      return res.json({message:'Incorrect password or email' }) 
+    }
+    const auth = await bcrypt.compare(password,user.password)
+    if (!auth) {
+      return res.json({message:'Incorrect password or email' }) 
+    }
+     const token = createSecretToken(user._id);
+     res.cookie("token", token, {
+       withCredentials: true,
+       httpOnly: false,
+     });
+     res.status(201).json({ message: "User logged in successfully", success: true });
+     next()
+  } catch (error) {
+    console.error(error);
+  }
+}
+
+// GET ALL POSTS
+export const getAllPosts = (req, res) => {
+    Post.find({})
+        .then (console.log('i made it Home Controller'))
+        .then(dbPostData => res.json(dbPostData))
+        .catch(err => {
+            console.log(err);
+            res.status(400).json(err);
+        })        
+}
+
+//GET POST BY ID
+// export const getPostById = (req, res) => {
+//     console.log({})
+//     Post.findById(req.params.id)
+//         .then(console.log('i am here'))
+//         .then(dbPostData => {
+//             if(!dbPostData){
+//                 res.status(404).json("This post cannot be found")
+//             } else {
+//                 res.json(dbPostData)
+//             }
+//         })
+//         .catch(err => res.status(400).json(err))
+// }

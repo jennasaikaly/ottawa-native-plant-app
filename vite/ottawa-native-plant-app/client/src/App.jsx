@@ -1,22 +1,33 @@
-// import { useState } from 'react'
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/public/vite.svg'
+import React, { useState } from 'react'
 import './App.css'
 import Footer from '/client/src/components/Footer.jsx'
 import Navbar from '/client/src/components/Navbar.jsx'
-import PostList from '/client/src/components/PostList.jsx'
+import Homepage from './pages/Homepage.jsx'
+import Dashboard from './pages/Dashboard.jsx'
+import Login from './pages/Login.jsx'
+import { Routes, Route } from 'react-router-dom'
+
 
 
 function App(){
+    
   return(
-    <>
+    <> 
       <Navbar />
-      <PostList />
-      <Footer />
+      
+        <div className ="container">
+          <Routes>
+            <Route path="/" element={<Homepage />} />
+            <Route path="/dashboard" element={<Dashboard />} />
+            <Route path="/login" element={<Login />} />
+          </Routes>
+        </div>   
+    
+      <footer>
+        <Footer />
+      </footer>
     </>
-    
-    
-  )
+      )
 }
 // function App() {
 //   const [count, setCount] = useState(0)

@@ -16,4 +16,7 @@ router
   .put(updatePost)
   .delete(deletePost);
 
+  // router
+  // .route('/upvote')
+
 export default router;
