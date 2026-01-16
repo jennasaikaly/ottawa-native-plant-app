@@ -12,22 +12,20 @@ import { Routes, Route } from 'react-router-dom'
 function App(){
     
   return(
-    <> 
-      <Navbar />
+      <div className="app-container"> 
+        <Navbar />
+        
+          <div className ="routes-container">
+            <Routes>
+              <Route path="/" element={<Homepage />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              <Route path="/login" element={<Login />} />
+            </Routes>
+          </div>   
       
-        <div className ="container">
-          <Routes>
-            <Route path="/" element={<Homepage />} />
-            <Route path="/dashboard" element={<Dashboard />} />
-            <Route path="/login" element={<Login />} />
-          </Routes>
-        </div>   
-    
-      <footer>
-        <Footer />
-      </footer>
-    </>
-      )
+          <Footer />      
+      </div>
+    )
 }
 // function App() {
 //   const [count, setCount] = useState(0)
