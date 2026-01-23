@@ -1,17 +1,37 @@
-import { Post } from '../models/index.js'
-
+import { Post, User } from '../models/index.js'
 
 //ALL OF THESE NEED AUTH STILL
 
-// GET ALL POSTS  
-export const getAllPosts = (req, res) => {
-    Post.find({})
-        .then (console.log('i made it Dashboard controller'))
-        .then(dbPostData => res.json(dbPostData))
-        .catch(err => {
-            console.log(err);
-            res.status(400).json(err);
-        })        
+// // GET ALL POSTS  
+// export const getAllPosts = (req, res) => {
+//     Post.find({})
+//         .then (console.log('i made it Dashboard controller'))
+//         .then(dbPostData => res.json(dbPostData))
+//         .catch(err => {
+//             console.log(err);
+//             res.status(400).json(err);
+//         })        
+// }
+
+export const getAllPostsByUser = async (req, res) => {
+    
+    const userId = req.body.userId;
+    if(!userId) {
+        return res.status(400).json({ message: 'User ID is required'})
+    } try{
+
+        const userWithPosts = await User.findById(userId).populate('posts')
+        
+        if (!userWithPosts){
+            return res.status(404).json({ message: 'No user found with this id'})
+        }
+        console.log('Successfully retrieved user with posts');
+        
+     res.json(userWithPosts); // Responds with the entire user object including the posts field
+    } catch (err){
+        console.error(err);
+        res.status(500).json({ message: 'An internal server error occured.', error: err.message});
+    }        
 }
 
 // GET POST BY ID AND UPDATE

@@ -1,14 +1,15 @@
 // import { Post } from '../models/Post'
 import express from 'express';
 const router = express.Router();
-import { getAllPosts, updatePost, deletePost } from '../controllers/post.controller.js'
+import { updatePost, deletePost } from '../controllers/post.controller.js'
+import { getAllPostsByUser } from '../controllers/dashboard-controller.js'
 
 // ALL OF THESE NEED AUTHORIZATION
 
 
 router
     .route('/')
-    .get(getAllPosts)
+    .get(getAllPostsByUser)
 
 router
     .route('/edit/:id')

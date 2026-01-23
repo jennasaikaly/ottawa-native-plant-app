@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 
+
 export default function Signup(){
     const [username, setUsername] = useState('')
     const [email, setEmail] = useState('')
@@ -25,7 +26,7 @@ export default function Signup(){
                 email: email,
                 password: password
             }
-            const response=await fetch('http://localhost:3000/api/users/signup', {
+            const response = await fetch('http://localhost:3000/api/users/signup', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
@@ -39,13 +40,18 @@ export default function Signup(){
             }
 
             const result = await response.json();
+            if (result && result.message === 'User already exists') {
+    alert('User already exists');
+} else {
             console.log('Success', result);
             alert('Form submitted successfully!');
             setUsername(''); //reset fields
             setEmail('');
             setPassword('')
-            navigate('/login');
-            // navigate('/dashboard');
+            // navigate('/login');
+            navigate('/dashboard');
+            }
+            
           
         } catch (error) {
             console.error('Error:', error);

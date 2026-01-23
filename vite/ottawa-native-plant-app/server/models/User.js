@@ -46,8 +46,7 @@ const UserSchema = new Schema({
     posts: [{ 
         type: Schema.Types.ObjectId,
         ref: 'Post'
-    }]
-
+    }]     
 })
 
 // Pre-save middleware to hash password

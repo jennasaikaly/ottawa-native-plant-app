@@ -4,16 +4,16 @@ const router = express.Router();
 import { userLogin } from '../../controllers/user.controller.js'
 import { getAllUsers } from '../../controllers/user.controller.js'
 import { userSignup } from '../../controllers/user.controller.js'
-
+import { getUserById } from '../../controllers/user.controller.js'
+// import { getAllPostsbyUser } from '../../controllers/user.controller.js'
 
 router
     .route('/')
     .get(getAllUsers)
-    // .post(userSignup) //create? should it have it's own route?
-
+    
 router
     .route('/:id')
-    // .get(getOneUser)
+    .get(getUserById)
     // .put(updateUser)
     // .delete(deleteUser)
 

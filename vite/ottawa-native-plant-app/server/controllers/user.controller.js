@@ -3,12 +3,23 @@ import { createSecretToken } from '../utils/auth.js'
 import bcrypt from 'bcrypt';
 
 export const userSignup = async (req, res, next) => {
+  debugger;
     try {
         const { email, password, username, createdAt } = req.body;
-        const existingUser = await User.findOne({ email });
+        
+        // const existingUser = await User.findOne({ 
+        //   $or: [{ username }, { email }]
+        // });
+        // if(existingUser) {
+        //   if (existingUser.username === username){
+        //     return res.json({ message: "Username already exists" });
+        //   }
+        //     return res.json({ message: "Email already exists" });
+        // } 
+         const existingUser = await User.findOne({ email });
         if(existingUser) {
             return res.json({ message: "User already exists" });
-        }
+        } 
         const user = await User.create({ email, password, username, createdAt });
         const token = createSecretToken(user._id);
         res.cookie("token", token, {
@@ -49,6 +60,22 @@ export const userLogin = async (req, res, next) => {
   }
 }
 
+//GET USER BY ID
+export const getUserById = (req, res) => {
+    console.log("I am trying to find by id")
+    User.findById(req.params.id)
+        .then(console.log('i am here'))
+        .then(dbUserData => {
+            if(!dbUserData){
+                res.status(404).json("This user cannot be found")
+            } else {
+                res.json(dbUserData)
+            }
+        })
+        .catch(err => res.status(400).json(err))
+}
+
+
 export const getAllUsers = (req, res) => {
     User.find({})
         .then(dbUserData => res.json(dbUserData))
@@ -57,10 +84,3 @@ export const getAllUsers = (req, res) => {
             res.status(400).json(err);
         })        
 }
-
-//     //CREATE USER
-// export const createUser = (req, res) => {
-//     User.create(req.body)
-//         .then(dbUserData => res.json(dbUserData))
-//         .catch(err => res.status(400).json(err));
-// }

@@ -10,13 +10,19 @@ const PostSchema = new Schema({
     post_text: {
         type: String
     },
-    author: {
-        type: Schema.Types.ObjectId,
-        ref: 'User'
-    }, 
+    // author: {
+    //     type: Schema.Types.ObjectId,
+    //     ref: 'User'
+    // }, 
     createdAt: {
         type: Date,
         default: Date.now
+    },
+    userId: {//Link to the User Model
+        type: Schema.Types.ObjectId,
+        ref: 'User',
+        required: true
+
     }
 }, {
     toJSON: { virtuals:true }, //includes 'in' in JSON responses
