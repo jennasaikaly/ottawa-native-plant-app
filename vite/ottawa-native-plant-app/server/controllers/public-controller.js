@@ -12,6 +12,26 @@ export const getAllPosts = (req, res) => {
         })        
 }
 
+//GET SINGLE POST BY ID
+export const getPostById = (req, res) => {
+    console.log({})
+    Post.findById(req.params.id)
+        .then(console.log('i am here'))
+        .then(dbPostData => {
+            if(!dbPostData){
+                res.status(404).json("This post cannot be found")
+            } else {
+                res.json(dbPostData)
+            }
+        })
+        .catch(err => res.status(400).json(err))
+}
+
+
+
+
+
+
 //get posts by USERID
 // export const getAllPostsbyUser = (req, res) => {
 //     Post.find({ userId: userId })
@@ -105,21 +125,6 @@ export const createPost = async (req, res) => {
         return res.status(400).json({ error: `Error creating post: ${e.message}` });
     }
 };
-
-//GET POST BY ID
-export const getPostById = (req, res) => {
-    console.log({})
-    Post.findById(req.params.id)
-        .then(console.log('i am here'))
-        .then(dbPostData => {
-            if(!dbPostData){
-                res.status(404).json("This post cannot be found")
-            } else {
-                res.json(dbPostData)
-            }
-        })
-        .catch(err => res.status(400).json(err))
-}
 
 // GET POST BY ID AND UPDATE
 export const updatePost = (req, res) => {

@@ -18,7 +18,7 @@ export default function Signup(){
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        debugger;
+        // debugger;
             
         try {
             const formData = {
@@ -26,7 +26,8 @@ export default function Signup(){
                 email: email,
                 password: password
             }
-            const response = await fetch('http://localhost:3000/api/users/signup', {
+            // const response = await fetch('http://localhost:3000/api/users/signup', {
+                const response = await fetch('http://localhost:3000/api/auth/register', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
