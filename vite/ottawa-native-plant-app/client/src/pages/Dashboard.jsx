@@ -1,7 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from 'react'
+import DashboardPostList from '/client/src/components/DashboardPostList.jsx'
 export default function Dashboard() {
+    // const [profile, setProfile] = useState(null);
+    // useEffect(() => {
+    //     fetch('api/auth/me/', {
+    //         method: 'GET',
+    //         headers: {
+    //         'Authorization': `Bearer ${localStorage.getItem('token')}`
+    //         }
+    //     })
+    //     .then(res => console.log("dashboard response headers is ", res.headers))
+    //     .then(res => res.json())
+        
+    //     .then(data => setProfile(data))
+    //     // .then(console.log("the dashboard data is", data))
+    //     .catch(err => console.error(err));
+    // }, []);
     return (
-        <div>This is the Dashboard</div>
+        <div className="dashboard-container">
+              <header>
+                <h1>Welcome to Your Dashboard</h1>
+                {/* {profile && <div>{profile.name}</div>} */}
+                <p> Check out your posts or create new ones!</p>
+              </header>
+              <section className="hero">
+                <div>Your Profile:</div>
+                 {/* <DashboardPostList /> */}
+              </section>
+            </div>
     //     <div>
     //         <h2>Create New Post</h2>
 

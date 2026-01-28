@@ -1,7 +1,8 @@
-import { userRegister, userLogin } from '../../../controllers/AuthController.js'
-// import { getCurrentUser } from '../../../controllers/AuthController.js'
+import { userRegister, userLogin, getCurrentUser } from '../../../controllers/AuthController.js'
+// import { cookieRefresh } from '../../../controllers/AuthController.js'
 import express from 'express';
 const router = express.Router();
+import { auth } from '../../../middlewares/AuthMiddleware.js'
 
 // REGISTER USER
 router
@@ -12,10 +13,15 @@ router
 router
     .route('/login')
     .post(userLogin)
-    export default router;
+
+// router
+//     .route('/refresh')
+//     .post(cookieRefresh)
+
 
 //GET CURRENT USER
-// router
-//     .route('/me')
-//     .get(getCurrentUser)
+router
+    .route('/me')
+    .get(auth, getCurrentUser)
 
+    export default router;

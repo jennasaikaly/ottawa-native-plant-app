@@ -1,17 +1,19 @@
 // import React, { createContext, useState, useEffect, useContext } from 'react';
 
+// //create the Context
 // const AuthContext = createContext(null);
 
+// //Create the Provider component
 // export const AuthProvider = ({ children }) => {
 //     // debugger;
-//     const [user, setUser] = useState(null);
-//     const [isLoading, setIsLoading] = useState(true); //track the intial check
+//     const [user, setUser] = useState(null); //manages the user state
+//     const [isLoading, setIsLoading] = useState(true); // manages initial loading state
 
 //     //Function to fetch the user status from the backend
 //     const checkAuthStatus = async () => {
 //         try {
 //             //the browser automatically attaches the HttpOnly cookie
-//             const response = await fetch('/dashboard/', { // The endpoint should be a generic check, not tied to a specific ':id' initially.
+//             const response = await fetch('/api/dashboard/', { // The endpoint should be a generic check, not tied to a specific ':id' initially.
 //                 method: 'GET',
 //                 credentials: 'include', //IMPORTANT for cross-origin requests
 //             });
@@ -83,4 +85,5 @@
 // );
     
 // };
+// //create a custom hook to easily access the context
 // export const useAuth = () => useContext(AuthContext);

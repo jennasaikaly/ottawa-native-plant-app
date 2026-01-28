@@ -7,6 +7,7 @@ import mongoose from 'mongoose';
 // import authRoute from './routes/AuthRoute.js'
 import routes from './routes/index.js'
 
+//configuring dotenv
 dotenv.config();
 
 //Connect to database
@@ -14,6 +15,7 @@ connectDB();
 
 const app = express();
 
+//setting up middlewares to parse request body and cookies
 app.use(cors());
 app.use(express.json());
 // app.use("/", authRoute)
