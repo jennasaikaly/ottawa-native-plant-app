@@ -1,89 +1,33 @@
-// import React, { createContext, useState, useEffect, useContext } from 'react';
+import React, { createContext, useState, useContext } from 'react';
 
-// //create the Context
-// const AuthContext = createContext(null);
+// 1. Create the Context object
+const AuthContext = createContext();
 
-// //Create the Provider component
-// export const AuthProvider = ({ children }) => {
-//     // debugger;
-//     const [user, setUser] = useState(null); //manages the user state
-//     const [isLoading, setIsLoading] = useState(true); // manages initial loading state
+// 2. Create the Provider Component
+export const AuthProvider = ({ children }) => {
+  
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Default: logged out
+  const [user, setUser] = useState(null); // To store user info
+  
+  const login = (userData) => {
 
-//     //Function to fetch the user status from the backend
-//     const checkAuthStatus = async () => {
-//         try {
-//             //the browser automatically attaches the HttpOnly cookie
-//             const response = await fetch('/api/dashboard/', { // The endpoint should be a generic check, not tied to a specific ':id' initially.
-//                 method: 'GET',
-//                 credentials: 'include', //IMPORTANT for cross-origin requests
-//             });
-//             if (response.ok) {
-//                 const userData = await response.json();
-//                 setUser(userData);
-//             } else {
-//                 setUser(null);
-//             }
-//         } catch (error) {
-//             console.error("Authentication check failed:", error);
-//             setUser(null);
-//         } finally {
-//             setIsLoading(false);
-//         }
-//     };
+    console.log("login data is",userData)
+    setIsLoggedIn(true);
+    setUser(userData);
+  };
 
-//     useEffect(() => {
-//         checkAuthStatus();
-//     }, []);
+  const logout = () => {
+    setIsLoggedIn(false);
+    setUser(null);    
+  };
 
-//     const login = async (credentials) => {
-//         debugger;
-//         console.log("The credentials are: " + credentials)
-//     try {
-//       // Send credentials to the backend /login endpoint
-//       const response = await fetch('/api/login', {
-//         method: 'POST',
-//         headers: {
-//           'Content-Type': 'application/json',
-//         },
-//         body: JSON.stringify(credentials),
-//         credentials: 'include', // Ensures the browser handles the cookie set by the server
-//       });
+  return (
+    // Pass the state and functions to children
+    <AuthContext.Provider value={{ isLoggedIn, user, login, logout }}>
+      {children}
+    </AuthContext.Provider>
+  );
+};
 
-//       if (response.ok) {
-//         // Assuming the response body contains user data if successful
-//         const userData = await response.json();
-//         setUser(userData);
-//         return true; // Indicate success
-//       } else {
-//         // Handle specific errors (e.g., wrong password)
-//         const errorData = await response.json();
-//         console.error("Login failed:", errorData.message);
-//         return false;
-//       }
-//     } catch (error) {
-//       console.error("Login request failed:", error);
-//       return false;
-//     }
-//   };
-//     const logout = async () => {
-//     try {
-//       // Call the backend /logout endpoint to clear the cookie
-//       await fetch('/api/logout', {
-//         method: 'POST',
-//         credentials: 'include',
-//       });
-//       setUser(null); // Clear the user state in the frontend
-//     } catch (error) {
-//       console.error("Logout failed:", error);
-//     }
-//   };
-
-// return (
-//     <AuthContext.Provider value={{ user, isLoading, login, logout }}>
-//     {children}
-//     </AuthContext.Provider>
-// );
-    
-// };
-// //create a custom hook to easily access the context
-// export const useAuth = () => useContext(AuthContext);
+// Custom hook for easy consumption
+export const useAuth = () => useContext(AuthContext);

@@ -1,7 +1,30 @@
 import React, { useState, useEffect } from 'react'
 import DashboardPostList from '/client/src/components/DashboardPostList.jsx'
+import { useAuth } from '../contexts/AuthContext'
+
+
 export default function Dashboard() {
-    // const [profile, setProfile] = useState(null);
+
+    const { user, loading } = useAuth()
+
+    if (loading) {
+    return <div>Loading...</div>; // Show a loading indicator
+  }
+
+  if (!user) {
+    return <div>Please log in.</div>;
+  }
+
+  return (
+    <div>
+      <h1>Welcome, {user.name}!</h1>
+      <p>Email: {user.email}</p>
+    </div>
+  );
+
+  // if (!user) return <div>Loading...</div>
+  // return <h1> Welcome, {user.username}</h1>
+  // const [profile, setProfile] = useState(null);
     // useEffect(() => {
     //     fetch('api/auth/me/', {
     //         method: 'GET',

@@ -1,17 +1,36 @@
 import React from 'react';
 import { Link, useMatch, useResolvedPath } from 'react-router-dom';
+import { useAuth } from '../contexts/AuthContext'
 
 export default function Navbar(){
+    //use the custom hook to access context values
+    const { isLoggedIn, user, logout } = useAuth()
+    // console.log("useAuth user is", user)
+    
     return (
+    
         <nav className="nav">
-            <Link to="/" className="site-title"> 
+            <CustomLink to="/" className="site-title"> 
                 Ottawa Native Plant App
-            </Link>
-            <ul>
-                <CustomLink to="/dashboard">Dashboard</CustomLink>
-                <CustomLink to="/login">Login</CustomLink>
+            </CustomLink>
+            {isLoggedIn && 
+            <CustomLink to="/dashboard" >
+                Dashboard
+            </CustomLink>}
+            
+            <ul>    
+                { isLoggedIn ? (
+            <>
+                <span>Welcome, {user ? user.name : 'User'}!</span>
+                <button onClick={logout} style={{ marginLeft: '10px' }}>Logout</button>
+            </>
+                ) : (
+            <>                    
+                <CustomLink to="/login">Login</CustomLink>,
                 <CustomLink to="/signup">Signup</CustomLink>
-            </ul>
+            </>
+                )}                
+            </ul>            
         </nav>
     )
 }
