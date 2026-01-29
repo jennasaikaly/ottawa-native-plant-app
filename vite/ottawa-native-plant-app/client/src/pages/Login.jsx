@@ -29,7 +29,8 @@ export default function Login(){
             const formData = {
                 email: email,
                 password: password
-            }
+            } 
+            // debugger;
             const response = await fetch('http://localhost:3000/api/auth/login',{    
                 method: 'POST',
                 headers: {
@@ -45,8 +46,8 @@ export default function Login(){
             if (result && result.message === "Incorrect password or email"){
             alert('Incorrect password or email');
             }else {
-                console.log('the result is:', result)
-                login(result) //Update the user context with the logged-in user's info
+                // console.log('the login result is:', result)
+                login(result, formData) //Update the user context with the logged-in user's info
                 console.log('Success', result);
                 alert('Login successful');
                 setEmail('');

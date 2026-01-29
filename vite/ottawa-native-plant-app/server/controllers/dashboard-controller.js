@@ -4,7 +4,7 @@ import { Post, User } from '../models/index.js'
 
 //GET MY POSTS
 export const getMyPosts = async (req, res) => {
-    
+    debugger;
     const userId = req.body.userId;
     if(!userId) {
         return res.status(400).json({ message: 'User ID is required'})

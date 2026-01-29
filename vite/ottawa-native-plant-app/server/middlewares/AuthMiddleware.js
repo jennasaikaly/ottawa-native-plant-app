@@ -4,6 +4,7 @@ dotenv.config();
 import jwt from 'jsonwebtoken';
 
 export const auth = (req, res, next) => {
+  debugger;
   const authHeader = req.headers.authorization || '';
   const [scheme, token] = authHeader.split(' ');
 
