@@ -40,32 +40,31 @@ export const userLogin = async (req, res, next) => {
     //destructuring email and password from body
     const { email, password } = req.body;
 
-    //checking if the credentials match
     if(!email || !password ){
       return res.json({message:'All fields are required'})
     }
     const user = await User.findOne({ email });
-    // console.log("user is", user)
+    
     if(!user){
-      return res.json({message:'Incorrect password or email' }) 
+      return res.json({message:'AuthController: no user'}) 
     }
     const auth = await bcrypt.compare(password,user.password)
+    // console.log("inputPassword is", password)
+    // console.log("hashed password is", user.password)
     if (!auth) {
-      return res.json({message:'Incorrect password or email' }) 
+      return res.json({message:'AuthController: cannot authenticate'}) 
     }
     //creating an access token
-    // console.log("user is", user)
     const accessToken = createAccessToken(user);
-    //  res.cookie("token", createRefreshToken, {
+    
     res.cookie("token", createAccessToken, {
-       withCredentials: true,
-       httpOnly: true, //change to true
-       sameSite: 'None', secure: true,
+      withCredentials: true,
+      httpOnly: true, 
+      sameSite: 'None', secure: true,
        maxAge: 24 * 60 * 60 * 1000
-     });
-     return res.json({ accessToken });
-    //  res.status(201).json({ message: "User logged in successfully", success: true });
-    //  next()
+    });
+    return res.json({ accessToken });
+    
   } catch (error) {
         console.error(error);
         return res.status(406).json({ message: 'Invalid credentials' });

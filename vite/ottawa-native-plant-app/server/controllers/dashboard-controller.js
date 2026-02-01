@@ -4,8 +4,9 @@ import { Post, User } from '../models/index.js'
 
 //GET MY POSTS
 export const getMyPosts = async (req, res) => {
-    debugger;
-    const userId = req.body.userId;
+    // debugger;
+    // console.log("getmyPosts is", req.user.id)
+    const userId = req.user.id;
     if(!userId) {
         return res.status(400).json({ message: 'User ID is required'})
     } try{
@@ -16,7 +17,7 @@ export const getMyPosts = async (req, res) => {
             return res.status(404).json({ message: 'No user found with this id'})
         }
         console.log('Successfully retrieved user with posts');
-        
+        // console.log("userWithPosts is", userWithPosts)
      res.json(userWithPosts); // Responds with the entire user object including the posts field
     } catch (err){
         console.error(err);

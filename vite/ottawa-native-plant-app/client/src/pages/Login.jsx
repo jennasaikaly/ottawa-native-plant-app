@@ -43,11 +43,13 @@ export default function Login(){
                 throw new Error(`HTTP error! status: ${response.status}`)
             }
             const result = await response.json();
-            if (result && result.message === "Incorrect password or email"){
-            alert('Incorrect password or email');
+            if (result && result.message === 'AuthController: no user'){
+            alert('AuthController: no user');
+            } else if (result && result.message === 'AuthController: cannot authenticate'){
+            alert('AuthController: cannot authenticate');
             }else {
                 // console.log('the login result is:', result)
-                login(result, formData) //Update the user context with the logged-in user's info
+                login(result) //Update the user context with the logged-in user's info
                 console.log('Success', result);
                 alert('Login successful');
                 setEmail('');

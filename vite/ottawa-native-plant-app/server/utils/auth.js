@@ -2,7 +2,8 @@ import jwt from 'jsonwebtoken';
 import dotenv from 'dotenv';
 dotenv.config()
 
-const expiration = '10m';
+const expiration = '60m';
+// const expiration = '10m';
 
 //FUNCTION TO GENERATE A TOKEN
 

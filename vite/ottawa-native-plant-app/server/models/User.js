@@ -49,10 +49,20 @@ const UserSchema = new Schema({
     }]     
 })
 
-// Pre-save middleware to hash password
-UserSchema.pre("save", async function() {
-    this.password = await bcrypt.hash(this.password, 12);
-})
+// ORIGINAL Pre-save middleware to hash password
+// UserSchema.pre("save", async function() {
+//     this.password = await bcrypt.hash(this.password, 12);
+// })
+
+UserSchema.pre("save", async function (next) {
+    if (!this.isModified("password")) return;
+    try {
+        this.password = await bcrypt.hash(this.password, 12);
+    } catch (error) {
+        console.log("Error hashing password:", error);
+        throw error; //Propagate the error to stop the save operation
+    }
+});
 
 // // Instance method to compare password for login
 // UserSchema.methods.comparePassword = async function(candidatePassword) {

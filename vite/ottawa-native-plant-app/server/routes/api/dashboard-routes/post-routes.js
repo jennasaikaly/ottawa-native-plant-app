@@ -4,14 +4,14 @@ import { getMyPosts, createPost, updatePost, deletePost } from '../../../control
 import { auth } from '../../../middlewares/AuthMiddleware.js'
 
 router
-    .route('/', auth)
-    .get(getMyPosts)
-    .post(createPost)
+    .route('/')
+    .get(auth, getMyPosts)
+    .post(auth, createPost)
 
 router
-    .route('/:id', auth)
-    .put(updatePost)
-    .delete(deletePost)
+    .route('/:id')
+    .put(auth, updatePost)
+    .delete(auth, deletePost)
 
     export default router;
 
