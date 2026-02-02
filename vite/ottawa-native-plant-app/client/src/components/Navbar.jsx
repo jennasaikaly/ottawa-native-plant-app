@@ -26,7 +26,7 @@ export default function Navbar(){
             </>
                 ) : (
             <>                    
-                <CustomLink to="/login">Login</CustomLink>,
+                <CustomLink to="/login">Login</CustomLink>
                 <CustomLink to="/signup">Signup</CustomLink>
             </>
                 )}                
