@@ -14,17 +14,17 @@ export default function Login(){
     const [password, setPassword] = useState('');
     const { login } = useAuth()// Access the login function from context
     const navigate = useNavigate(); 
-    debugger;
+   
     function handleChange(e) {
         e.preventDefault();
-        console.log(e.target.value)
+        // console.log(e.target.value)
         setEmail(e.target.value)
         setPassword(e.target.value)
     }
 
     const handleSubmit = async (event) => {
         event.preventDefault();
-        
+        //  debugger;
         try {
             const formData = {
                 email: email,
@@ -43,19 +43,25 @@ export default function Login(){
                 throw new Error(`HTTP error! status: ${response.status}`)
             }
             const result = await response.json();
-            if (result && result.message === 'AuthController: no user'){
-            alert('AuthController: no user');
-            } else if (result && result.message === 'AuthController: cannot authenticate'){
-            alert('AuthController: cannot authenticate');
-            }else {
-                // console.log('the login result is:', result)
+            //new code
+            if (result && result.message === 'Login successful'){
+                // console.log(result.message);
                 login(result) //Update the user context with the logged-in user's info
-                console.log('Success', result);
-                alert('Login successful');
                 setEmail('');
                 setPassword('');
                 navigate('/dashboard')
+            } else {
+                alert(result.message)
             }
+            //old code
+            // if (result && result.message === 'AuthController: no user'){
+            // alert('AuthController: no user');
+            // } else if (result && result.message === 'AuthController: cannot authenticate'){
+            // alert('AuthController: cannot authenticate');
+            // }else {
+            //     // console.log('the login result is:', result)
+               
+            // }
         }
         catch(error){
             console.error('Error:', error);

@@ -22,20 +22,19 @@ export default function PostForm(){
     const handleSubmit = async (event) => {
         event.preventDefault();
         // debugger;
-console.log("user info is", user)
+
         if (!user || !user.accessToken) {
             setLoading(false);
             return;
         }
-        console.log("user info is", user)
+    
         try {
             const postFormData = {
                 post_title: newPostTitle,
                 post_text: newPostText,
-                post_url: newPostUrl,
-                // userId: "1"
+                post_url: newPostUrl,                
             }
-            console.log("user info is", user)
+            
             const response = await fetch('http://localhost:3000/api/dashboard/posts/', {
                 method: 'POST',
                 headers: {
@@ -45,17 +44,17 @@ console.log("user info is", user)
                 body: JSON.stringify(postFormData)
             });
             if (!response.ok){
-                //Handle HTTP errprs
+                //Handle HTTP errors
                 throw new Error(`HTTP error! status: ${response.status}`)
             }
             const result = await response.json();
+            console.log(result.message)
             if (result && result.message === 'AuthController: no user'){
             alert('AuthController: no user');
             } else if (result && result.message === 'AuthController: cannot authenticate'){
             alert('AuthController: cannot authenticate');
             }else {
-                
-                // login(result) //Update the user context with the logged-in user's info
+                console.log('the result is:', result)
                 console.log('Success', result);
                 alert('Post created');
                 setNewPostText('');
@@ -75,17 +74,17 @@ console.log("user info is", user)
             <form onSubmit={handleSubmit} className="new-post-form">
                 <div>
                     <label htmlFor="new-post-title">Title</label>
-                    <input type="text" id="new-post-title" onChange={(e) => setNewPostTitle(e.target.value)} value={newPostTitle} />
+                    <input required type="text" id="new-post-title" onChange={(e) => setNewPostTitle(e.target.value)} value={newPostTitle} />
                 </div>
                 <div>
                     <label htmlFor="new-post-url">Link</label>
-                    <input id="new-post-url" onChange={(e) => setNewPostUrl(e.target.value)} value={newPostUrl} />
+                    <input required id="new-post-url" onChange={(e) => setNewPostUrl(e.target.value)} value={newPostUrl} />
                 </div>
                 <div>
                     <label htmlFor="new-post-body">Post:</label>
-                    <textarea id="new-post-body" onChange={(e) => setNewPostText(e.target.value)} value={newPostText}></textarea>
+                    <textarea required id="new-post-body" onChange={(e) => setNewPostText(e.target.value)} value={newPostText}></textarea>
                 </div>
-                <button type="submit" class="btn"  onChange={handleChange} onSubmit={handleSubmit}>Create</button>
+                <button type="submit" className="btn" onChange={handleChange} onSubmit={handleSubmit}>Create</button>
             </form>
         </div>
     )

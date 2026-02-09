@@ -4,7 +4,7 @@ import {  createAccessToken } from '../utils/auth.js'
 import bcrypt from 'bcrypt'
 
 export const userRegister = async (req, res, next) => {
-  debugger;
+  // debugger;
     try {
         const { email, password, username, createdAt } = req.body;
         
@@ -36,7 +36,7 @@ export const userRegister = async (req, res, next) => {
 }
 
 export const userLogin = async (req, res, next) => {
-  debugger;
+  // debugger;
   try {
     //destructuring email and password from body
     const { email, password } = req.body;
@@ -47,13 +47,13 @@ export const userLogin = async (req, res, next) => {
     const user = await User.findOne({ email });
     
     if(!user){
-      return res.json({message:'AuthController: no user'}) 
+      return res.json({message:'No account exists for this email.'}) 
     }
     const auth = await bcrypt.compare(password,user.password)
     // console.log("inputPassword is", password)
     // console.log("hashed password is", user.password)
     if (!auth) {
-      return res.json({message:'AuthController: cannot authenticate'}) 
+      return res.json({message:'Invalid password'}) 
     }
     //creating an access token
     const accessToken = createAccessToken(user);
@@ -64,7 +64,7 @@ export const userLogin = async (req, res, next) => {
       sameSite: 'None', secure: true,
        maxAge: 24 * 60 * 60 * 1000
     });
-    return res.json({ accessToken });
+    return res.json({ accessToken, message: "Login successful" });
     
   } catch (error) {
         console.error(error);

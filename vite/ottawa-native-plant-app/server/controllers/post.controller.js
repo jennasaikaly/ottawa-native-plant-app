@@ -4,7 +4,7 @@ import { User } from '../models/index.js'
 // GET ALL POSTS
 export const getAllPosts = (req, res) => {
     Post.find({})
-        .then (console.log('i made it Post Controller'))
+        // .then (console.log('i made it Post Controller'))
         .then(dbPostData => res.json(dbPostData))
         .catch(err => {
             console.log(err);
@@ -64,9 +64,10 @@ export const getAllPosts = (req, res) => {
 //     }
 
 export const createPost = async (req, res) => {
-    // It's safer to destructure directly from req.body if possible
-    
-    const { userId, ...postData } = req.body;
+       debugger;
+        // const { userId, ...postData } = req.body;
+        const { userId, post_title, post_text, post_url } = req.body;
+    console.log('post title:',req.body.post_title)
     // console.log("the userId is ", userId);
     // console.log("the rest of the data is", postData)
     try {
@@ -108,9 +109,9 @@ export const createPost = async (req, res) => {
 
 //GET POST BY ID
 export const getPostById = (req, res) => {
-    console.log({})
+    // console.log({})
     Post.findById(req.params.id)
-        .then(console.log('i am here'))
+        // .then(console.log('i am here'))
         .then(dbPostData => {
             if(!dbPostData){
                 res.status(404).json("This post cannot be found")

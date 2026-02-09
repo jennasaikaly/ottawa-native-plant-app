@@ -5,7 +5,7 @@ import jwt from 'jsonwebtoken';
 
 export const auth = (req, res, next) => {
   debugger;
-  console.log("auth req is", req.headers.authorization)
+  // console.log("auth req is", req.headers.authorization)
   const authHeader = req.headers.authorization || '';
   const [scheme, token] = authHeader.split(' ');
 
@@ -18,7 +18,7 @@ export const auth = (req, res, next) => {
     next();
   } catch (err) {
     const decoded = jwt.verify(token, process.env.ACCESS_TOKEN_SECRET);
-    console.log("decoded is", decoded)
+    // console.log("decoded is", decoded)
     if (err.name === 'TokenExpiredError') {
       return res.status(401).json({ message: 'Access token expired' });
     }

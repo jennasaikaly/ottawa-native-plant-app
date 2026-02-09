@@ -13,7 +13,7 @@ export const AuthProvider = ({ children }) => {
   
   const login = (userData) => {
 
-    console.log("login data is",userData)
+    // console.log("login data is",userData)
     setIsLoggedIn(true);
     setUser(userData);
   };

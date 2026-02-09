@@ -62,7 +62,7 @@ export default function DashboardPostList(){
         }
         
         const data = await response.json();
-        console.log("fetch data is", data.posts)
+        // console.log("fetch data is", data.posts)
         setPosts(data.posts);
         setError(null);
         // console.log("posts are", posts)

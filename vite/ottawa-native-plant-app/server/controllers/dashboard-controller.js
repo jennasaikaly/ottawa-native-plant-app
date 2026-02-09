@@ -16,7 +16,7 @@ export const getMyPosts = async (req, res) => {
         if (!userWithPosts){
             return res.status(404).json({ message: 'No user found with this id'})
         }
-        console.log('Successfully retrieved user with posts');
+        // console.log('Successfully retrieved user with posts');
         // console.log("userWithPosts is", userWithPosts)
      res.json(userWithPosts); // Responds with the entire user object including the posts field
     } catch (err){
@@ -30,7 +30,7 @@ export const createPost = async (req, res) => {
     // It's safer to destructure directly from req.body if possible
     // console.log("req user is", req.user.id)
     // console.log("req body is", req.body)
-    debugger;
+    // debugger;
     const userId = req.user.id;
     const postBody = req.body
     const postData = {
@@ -39,7 +39,7 @@ export const createPost = async (req, res) => {
     }
     // postData.append("userId", userId);
     // const { userId, ...postData } = req.body;
-    console.log("the full createPost data is ", postData);
+    // console.log("the full createPost data is ", postData);
     // console.log("the rest of the data is", postData)
     try {
         // 1. Create and save the new post document in one step using Post.create()

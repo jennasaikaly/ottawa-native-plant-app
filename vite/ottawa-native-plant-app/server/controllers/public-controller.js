@@ -4,7 +4,7 @@ import { User } from '../models/index.js'
 // GET ALL POSTS
 export const getAllPosts = (req, res) => {
     Post.find({})
-        .then (console.log('i made it Post Controller'))
+        // .then (console.log('i made it Post Controller'))
         .then(dbPostData => res.json(dbPostData))
         .catch(err => {
             console.log(err);
