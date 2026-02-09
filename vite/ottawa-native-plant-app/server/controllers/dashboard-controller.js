@@ -28,14 +28,23 @@ export const getMyPosts = async (req, res) => {
 // CREATE POST
 export const createPost = async (req, res) => {
     // It's safer to destructure directly from req.body if possible
-    
-    const { userId, ...postData } = req.body;
-    // console.log("the userId is ", userId);
+    // console.log("req user is", req.user.id)
+    // console.log("req body is", req.body)
+    debugger;
+    const userId = req.user.id;
+    const postBody = req.body
+    const postData = {
+        ...postBody,
+        userId: userId
+    }
+    // postData.append("userId", userId);
+    // const { userId, ...postData } = req.body;
+    console.log("the full createPost data is ", postData);
     // console.log("the rest of the data is", postData)
     try {
         // 1. Create and save the new post document in one step using Post.create()
         // The postData already contains all necessary fields including any user reference if structured that way
-        const newPost = await Post.create(req.body);
+        const newPost = await Post.create(postData);
         // const newPostData =JSON.stringify(newPost);
     //    console.log("new post data is", newPostData)
         console.log('Created post:', newPost);

@@ -36,6 +36,7 @@ export const userRegister = async (req, res, next) => {
 }
 
 export const userLogin = async (req, res, next) => {
+  debugger;
   try {
     //destructuring email and password from body
     const { email, password } = req.body;

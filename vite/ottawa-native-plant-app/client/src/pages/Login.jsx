@@ -14,7 +14,7 @@ export default function Login(){
     const [password, setPassword] = useState('');
     const { login } = useAuth()// Access the login function from context
     const navigate = useNavigate(); 
-
+    debugger;
     function handleChange(e) {
         e.preventDefault();
         console.log(e.target.value)

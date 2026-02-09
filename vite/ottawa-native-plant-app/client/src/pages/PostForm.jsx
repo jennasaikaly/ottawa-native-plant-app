@@ -1,24 +1,91 @@
 import react, { useState } from 'react';
 import { useAuth } from '../contexts/AuthContext'
+import { Link, useNavigate } from 'react-router-dom'
 
 export default function PostForm(){
+    const { user } = useAuth();
+    const [newPostTitle, setNewPostTitle] = useState('')
+    const [newPostText, setNewPostText] = useState('')
+    const [newPostUrl, setNewPostUrl] = useState('')
+    const [ posts, setPosts ] = useState([]);
+    const [ error, setError ] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const navigate = useNavigate();
+
+    function handleChange(e) {
+        e.preventDefault();
+        setNewPostTitle(e.target.value);
+        setNewPostText(e.target.value);
+        setNewPostUrl(e.target.value);        
+    }
+
+    const handleSubmit = async (event) => {
+        event.preventDefault();
+        // debugger;
+console.log("user info is", user)
+        if (!user || !user.accessToken) {
+            setLoading(false);
+            return;
+        }
+        console.log("user info is", user)
+        try {
+            const postFormData = {
+                post_title: newPostTitle,
+                post_text: newPostText,
+                post_url: newPostUrl,
+                // userId: "1"
+            }
+            console.log("user info is", user)
+            const response = await fetch('http://localhost:3000/api/dashboard/posts/', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${user.accessToken}`,
+                },
+                body: JSON.stringify(postFormData)
+            });
+            if (!response.ok){
+                //Handle HTTP errprs
+                throw new Error(`HTTP error! status: ${response.status}`)
+            }
+            const result = await response.json();
+            if (result && result.message === 'AuthController: no user'){
+            alert('AuthController: no user');
+            } else if (result && result.message === 'AuthController: cannot authenticate'){
+            alert('AuthController: cannot authenticate');
+            }else {
+                
+                // login(result) //Update the user context with the logged-in user's info
+                console.log('Success', result);
+                alert('Post created');
+                setNewPostText('');
+                setNewPostTitle('');
+                setNewPostUrl('')
+                navigate('/dashboard')
+            }
+        }
+            catch(error){
+            console.error('Error:', error);
+            alert('Post creation failed')
+        }        
+        }
     return (
         <div>  <h1>Create a new Post!</h1> 
 
-            <form className="new-post-form">
+            <form onSubmit={handleSubmit} className="new-post-form">
                 <div>
-                    <label for="new-post-title">Title</label>
-                    <input type="text" id="new-post-title" name="new-post-title" />
+                    <label htmlFor="new-post-title">Title</label>
+                    <input type="text" id="new-post-title" onChange={(e) => setNewPostTitle(e.target.value)} value={newPostTitle} />
                 </div>
                 <div>
-                    <label for="new-post-url">Link</label>
-                    <input id="new-post-url" name="new-post-url" />
+                    <label htmlFor="new-post-url">Link</label>
+                    <input id="new-post-url" onChange={(e) => setNewPostUrl(e.target.value)} value={newPostUrl} />
                 </div>
                 <div>
-                    <label for="new-post-body">Post:</label>
-                    <textarea name="new-post-body"></textarea>
+                    <label htmlFor="new-post-body">Post:</label>
+                    <textarea id="new-post-body" onChange={(e) => setNewPostText(e.target.value)} value={newPostText}></textarea>
                 </div>
-                <button type="submit" class="btn">Create</button>
+                <button type="submit" class="btn"  onChange={handleChange} onSubmit={handleSubmit}>Create</button>
             </form>
         </div>
     )
