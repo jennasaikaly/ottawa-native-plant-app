@@ -31,9 +31,9 @@ a {
   background-color: lightgreen;
   color: black;
   display:flex;
-  justify-content: space-between;
+  justify-content: flex-end;
   align-items: stretch;
-  gap: 2rem;
+  gap: 26.4rem;
   padding: 0 1rem;
   left: 0;
   top:0;
@@ -70,8 +70,50 @@ li {
 }
 .routes-container {
   display: flex;
+  justify-content: center;
   width: 100%;
 }
+/* sign up page CSS begin*/
+.sign-up-page {
+  color:black;
+}
+
+.sign-up-userName {
+  color:black;
+  display: flex;
+  justify-content: flex-start;
+  gap: 20px;
+}
+
+.sign-up-email {
+  color:black;
+  display: flex;
+  justify-content: flex-start;
+  gap: 55.9px;
+}
+
+.sign-up-passWord {
+  color:black;
+  display: flex;
+  justify-content: flex-start;
+  gap: 25.4px;
+}
+
+.sign-up-button {
+  color:black;
+  display: flex;
+  justify-content: center;
+}
+
+.account-already {
+  color: black;
+  display: flex;
+  justify-content: center;
+}
+
+/* sign up page CSS end */
+
+
 .footer {
   border-top: 1px solid #ccc;
   left: 0;
@@ -80,9 +122,9 @@ li {
   text-align: center;
   position: fixed;
   display: flex;
-  justify-content: center;
+  justify-content: flex-end;
   padding: 1%;
-  font-size: 110%;
+  font-size: 70%;
   background-color: lightgreen;
 } 
 /* 
