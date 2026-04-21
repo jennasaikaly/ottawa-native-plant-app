@@ -61,7 +61,7 @@ export default function Signup(){
     }
     
     return ( 
-    <div>
+    <div className="sign-up-page">
         <h1> This is the signup page</h1>
         
         <div>           
@@ -69,25 +69,25 @@ export default function Signup(){
             {/* <Form method="post">
             {/* <Form method="post" action="/signup"> */}
             <form onSubmit={handleSubmit} className="signup-form">
-                    <div>
+                    <div className="sign-up-userName">
                         <label htmlFor="username-signup">Username:</label>
                         {/* <input type="text" name="username" value={username} id="username-signup" /> */}
                         <input type="text" onChange={(e) => setUsername(e.target.value)} value={username} id="username-signup" />
                     </div>
-                    <div>
+                    <div className="sign-up-email">
                         <label htmlFor="email-signup">email:</label>
                         {/* <input type="text" name="email" value={email} id="email-signup" /> */}
                         <input type="text" onChange={(e) => setEmail(e.target.value)} value={email} id="email-signup" />
                     </div>
-                    <div>
+                    <div className="sign-up-passWord">
                         <label htmlFor="password-signup">password:</label>
                         {/* <input type="text" name="password" value={password} id="password-signup" /> */}
                         <input type="text" onChange={(e) => setPassword(e.target.value)} value={password} id="password-signup" />
                     </div>
-                    <div>
+                    <div className="sign-up-button">
                         <button onSubmit={handleSubmit} type="submit" onChange={handleChange}>signup</button>
                     </div>
-                    <div> Already have an account? <Link to={"/login"}>Login</Link></div>
+                    <div className="account-already"> Already have an account? <Link to={"/login"}>Login</Link></div>
             </form>
         </div>   
     </div>              
