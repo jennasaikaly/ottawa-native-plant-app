@@ -84,27 +84,23 @@ li {
   justify-content: flex-start;
   gap: 20px;
 }
-
 .sign-up-email {
   color:black;
   display: flex;
   justify-content: flex-start;
   gap: 55.9px;
 }
-
 .sign-up-passWord {
   color:black;
   display: flex;
   justify-content: flex-start;
   gap: 25.4px;
 }
-
 .sign-up-button {
   color:black;
   display: flex;
   justify-content: center;
 }
-
 .account-already {
   color: black;
   display: flex;
@@ -120,21 +116,17 @@ li {
   justify-content: flex-start;
   gap: 47px;
 }
-
 .login-page {
   color: black;
 }
-
 .login-email {
   display: flex;
   justify-content: flex-start;
 }
-
 .login-input {
   display: flex;
   justify-content: flex-start;
 }
-
 .login-password-input {
   display: flex;
   justify-content: flex-start;
