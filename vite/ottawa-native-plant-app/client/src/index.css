@@ -48,6 +48,7 @@ a:hover {
   background-color: lightgreen;
   padding: 2rem;
   text-align: center;
+  background-image: linear-gradient(to left, rgba(7, 172, 42, 0), rgb(4, 106, 43));
   /* height: 100%;/
   /* display:flex; */
 }
