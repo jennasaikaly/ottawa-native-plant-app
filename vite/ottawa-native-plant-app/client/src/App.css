@@ -113,6 +113,35 @@ li {
 
 /* sign up page CSS end */
 
+/* log in page CSS start */
+
+.login-email-input {
+  display: flex;
+  justify-content: flex-start;
+  gap: 47px;
+}
+
+.login-page {
+  color: black;
+}
+
+.login-email {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.login-input {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.login-password-input {
+  display: flex;
+  justify-content: flex-start;
+  gap: 17px;
+}
+
+/* Log in page CSS End */
 
 .footer {
   border-top: 1px solid #ccc;

@@ -71,15 +71,15 @@ export default function Login(){
     return (    
     <div>
         <h1> This is the Login page</h1>
-        <div>           
+        <div className="login-page">           
             <form onSubmit={handleSubmit} className="login-form">
-                <div>
-                    <label htmlFor="email-login">email:</label>
-                    <input type="text" onChange={(e) => setEmail(e.target.value)} value={email} id="email-login" />
+                <div className="login-email-input">
+                    <label htmlFor="email-login" className="login-email">email:</label>
+                    <input type="text" onChange={(e) => setEmail(e.target.value)} value={email} id="email-login" className="login-input"/>
                 </div>
-                <div>
-                    <label htmlFor="password-login">password:</label>
-                    <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} id="password-login" autoComplete="off" />
+                <div className="login-password-input">
+                    <label htmlFor="password-login" className="login-password">password:</label>
+                    <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} id="password-login" className="login-input" autoComplete="off" />
                 </div>
                 <div>
                     <button onSubmit={handleSubmit} onChange={handleChange} type="submit">Login</button>
