@@ -20,7 +20,8 @@ body {
   font-family: sans-serif;
   line-height: 1.6;
   color: var(--text-color);
-  /* background-color: green */
+  background-color: lightgreen;
+  background-image: linear-gradient(to left, rgba(7, 172, 42, 0), rgb(4, 106, 43));
   /* -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale; */
   height: 100;

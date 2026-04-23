@@ -139,7 +139,7 @@ li {
 /* Log in page CSS End */
 
 .footer {
-  border-top: 1px solid #ccc;
+  /* border-top: 1px solid #ccc; */
   left: 0;
   bottom: 0;
   width: 100%;
@@ -148,7 +148,8 @@ li {
   display: flex;
   justify-content: flex-end;
   padding: 1%;
-  font-size: 70%;
+  font-size: 57%;
+  font-style:normal;
   background-color: lightgreen;
   background-image: linear-gradient(to left, rgba(7, 172, 42, 0), rgb(4, 106, 43));
 } 
