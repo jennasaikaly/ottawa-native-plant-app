@@ -3,7 +3,7 @@
 /* --- Basic Reset --- */
 *, *::before, *::after {
   box-sizing: border-box; /* Essential for predictable sizing */
-  margin: 0;
+  /*margin: 0;*/
   padding: 0;
 }
 
@@ -47,9 +47,10 @@ a:hover {
   /* max-width: 1280px; */
   /* margin: 0 auto; */
   background-color: lightgreen;
-  padding: 2rem;
+  /*padding: 2rem;*/
   text-align: center;
   background-image: linear-gradient(to left, rgba(7, 172, 42, 0), rgb(4, 106, 43));
   /* height: 100%;/
   /* display:flex; */
 }
+
