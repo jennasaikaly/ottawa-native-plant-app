@@ -70,7 +70,7 @@ export default function Signup(){
             {/* <Form method="post" action="/signup"> */}
             <form onSubmit={handleSubmit} className="signup-form">
                     <div className="sign-up-userName">
-                        <label htmlFor="username-signup">Username:</label>
+                        <label htmlFor="username-signup">username:</label>
                         {/* <input type="text" name="username" value={username} id="username-signup" /> */}
                         <input type="text" onChange={(e) => setUsername(e.target.value)} value={username} id="username-signup" />
                     </div>

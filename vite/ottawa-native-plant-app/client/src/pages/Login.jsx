@@ -82,7 +82,7 @@ export default function Login(){
                     <input type="password" onChange={(e) => setPassword(e.target.value)} value={password} id="password-login" className="login-input" autoComplete="off" />
                 </div>
                 <div>
-                    <button onSubmit={handleSubmit} onChange={handleChange} type="submit">Login</button>
+                    <button onSubmit={handleSubmit} onChange={handleChange} type="submit" className="login-button">Login</button>
                 </div>                   
             </form>            
         </div>

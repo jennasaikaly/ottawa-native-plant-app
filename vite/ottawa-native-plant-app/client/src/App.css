@@ -70,21 +70,17 @@ justify-content: center;
 
 .sign-up-userName {
   color:black;
-  display: flex;
-  justify-content: flex-start;
-  gap: 20px;
+  display: block;
+  
 }
 .sign-up-email {
   color:black;
-  display: flex;
-  justify-content: flex-start;
-  gap: 55.9px;
+  display: block;
+  
 }
 .sign-up-passWord {
   color:black;
-  display: flex;
-  justify-content: flex-start;
-  gap: 25.4px;
+  display: block;
 }
 .sign-up-button {
   color:black;
@@ -95,8 +91,14 @@ justify-content: center;
   color: black;
   display: flex;
   justify-content: center;
+  padding-top: 5px;
 }
-
+.account-already a {
+  padding: 2.5px 0 0 2.5px;
+}
+.sign-up-button {
+  padding-top:3.5px;
+}
 /* sign up page CSS end */
 
 /* log in page CSS start */
