@@ -1,6 +1,6 @@
 /* Stefan CSS Redesign */
 body, html {
-  min-height: 100%;
+  min-height: 100vh;
   width: 100%;
   padding: 0;
   margin: 0;
@@ -23,6 +23,7 @@ nav {
 .app-container {
 display: flex;
 flex-direction: column;
+min-height: 100vh;
 }
 
 li a.site-title {
@@ -68,6 +69,10 @@ p {
   font-size: 1em;
 }
 
+
+footer {
+  margin-top: auto;
+}
 footer h1 {
 display: flex;
 justify-content: center;
@@ -142,6 +147,7 @@ justify-content: center;
   display: block;
 }
 
+
 @media (min-width: 375px) {
   li a.site-title {
   font-family:'Times New Roman', Times, serif;
@@ -157,10 +163,23 @@ justify-content: center;
   padding: 0;
   margin: 0;
   color: #333;
-  
+  }
+  li a.site-title {
+  font-family:'Times New Roman', Times, serif;
+  font-weight:bold;
+  font-size:larger;
+  padding: 0 0 0 0;
+  color: black;
+  text-decoration: none;
+  place-items: center;
+  }
+  .navLinks {
+  place-items: center;
+ }
+ body {
+  line-height: 1.3;
 }
 }
-
 /* Log in page CSS End */
 
 /* * {
