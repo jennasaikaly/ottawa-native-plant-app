@@ -25,9 +25,11 @@ export default function Navbar(){
                 <button onClick={logout} style={{ marginLeft: '10px' }}>Logout</button>
             </>
                 ) : (
-            <>                    
+            <>    
+                <div className="navLinks">               
                 <CustomLink to="/login">Login</CustomLink>
                 <CustomLink to="/signup">Signup</CustomLink>
+                </div> 
             </>
                 )}                
             </ul>            
