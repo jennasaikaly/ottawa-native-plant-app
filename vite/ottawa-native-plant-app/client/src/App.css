@@ -59,6 +59,7 @@ input {
   display: block;
   margin: 0 auto;
   width: 200px;
+  border-radius: 4px;
 }
 
 p {
@@ -99,16 +100,18 @@ footer h1 {
 .sign-up-userName {
   color:black;
   display: block;
+  padding: 2px;
   
 }
 .sign-up-email {
   color:black;
   display: block;
-  
+  padding: 2px;
 }
 .sign-up-passWord {
   color:black;
   display: block;
+  padding: 2px;
 }
 .sign-up-button {
   color:black;
@@ -585,6 +588,17 @@ footer h1 {
       padding: 2.7px 0 0 2.7px;
       font-size: 16px;
       align-items: center;
+  }
+}
+@media (min-width: 1920px) {
+    li a.site-title {
+      font-size: 70px;
+      align-items: center;
+  }
+    nav {
+      display: flex;
+      justify-content: flex-end;
+      gap: 470px;
   }
 }
 
