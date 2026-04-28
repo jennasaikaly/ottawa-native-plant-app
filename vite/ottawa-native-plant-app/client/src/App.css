@@ -21,9 +21,9 @@ nav {
 }
 
 .app-container {
-display: flex;
-flex-direction: column;
-min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
 }
 
 li a.site-title {
@@ -47,8 +47,8 @@ ul {
 }
 
 li {
-display: flex;
-justify-content: flex-end;
+  display: flex;
+  justify-content: flex-end;
 }
 
 header h1 {
@@ -71,9 +71,9 @@ footer {
 }
 
 footer h1 {
-display: flex;
-justify-content: center;
-font-size: 16px;
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
 }
 
 /* sign up page CSS begin*/
@@ -83,8 +83,8 @@ font-size: 16px;
 }
 
 .routes-container h1 {
-    font-size: 18px;
-  }
+  font-size: 18px;
+}
 
 .sign-up-userName {
   color:black;
@@ -152,26 +152,26 @@ font-size: 16px;
 
 @media (min-width: 375px) {
   li a.site-title {
-  font-weight:bold;
-  font-size: px;
-  padding: 0 0 0 0;
-  color: black;
-  text-decoration: none;
+    font-weight:bold;
+    font-size: px;
+    padding: 0 0 0 0;
+    color: black;
+    text-decoration: none;
   }
   body, html {
-  min-height: 100%;
-  width: 100%;
-  padding: 0;
-  margin: 0;
-  color: #333;
+    min-height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+    color: #333;
   }
   li a.site-title {
-  font-weight:bold;
-  font-size:25px;
-  padding: 0 0 0 0;
-  color: black;
-  text-decoration: none;
-  place-items: center;
+    font-weight:bold;
+    font-size:25px;
+    padding: 0 0 0 0;
+    color: black;
+    text-decoration: none;
+    place-items: center;
   }
 
   a {
@@ -179,88 +179,88 @@ font-size: 16px;
   }
 
   .navLinks {
-  place-items: center;
+    place-items: center;
   }
   body {
-  line-height: 1.3;
+    line-height: 1.3;
   }
   header h1 {
-  font-size: 20px;
+    font-size: 20px;
   }
   p {
-  font-size: 17px;
+    font-size: 17px;
   }
 
   /* sign up page CSS begins */
   .sign-up-page {
-  color:black;
-  font-size: 16px;
+    color:black;
+    font-size: 16px;
   }
 
   .routes-container h1 {
     font-size: 20px;
   }
   .sign-up-userName {
-  color:black;
-  display: block;
+    color:black;
+    display: block;
   
   }
   .sign-up-email {
-  color:black;
-  display: block;
+    color:black;
+    display: block;
   
   }
   .sign-up-passWord {
-  color:black;
-  display: block;
+    color:black;
+    display: block;
   }
   .sign-up-button {
-  color:black;
-  display: flex;
-  justify-content: center;
+    color:black;
+    display: flex;
+    justify-content: center;
   }
   .account-already {
-  color: black;
-  display: flex;
-  justify-content: center;
-  padding-top: 5px;
+    color: black;
+    display: flex;
+    justify-content: center;
+    padding-top: 5px;
   }
   .account-already a {
-  padding: 2.5px 0 0 2.5px;
+    padding: 2.5px 0 0 2.5px;
   }
   .sign-up-button {
-  padding-top:3.5px;
+    padding-top:3.5px;
   }
 /* sign up page CSS end */
 
 /* log in page CSS start */
 
   .login-email-input {
-  display: block;
-  justify-content: center;
-  gap: 47px;
+    display: block;
+    justify-content: center;
+    gap: 47px;
   }
   #email-login {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
   }
   #password-login {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
   }
   .login-page {
-  color: black;
+    color: black;
   }
   .login-email {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
   }
   .login-input {
-  display: flex;
-  justify-content: center;
+    display: flex;
+    justify-content: center;
   }
   .login-password-input {
-  display: block;
+    display: block;
 
   /* Log in page CSS End */
 }
@@ -271,8 +271,8 @@ font-size: 16px;
   }
     
   li a.site-title {
-        font-weight: bold;
-        font-size: 27px;
+    font-weight: bold;
+    font-size: 27px;
   }
 
   .routes-container h1 {
@@ -293,15 +293,122 @@ font-size: 16px;
   li a.site-title {
     font-size: 30px;
   }
-
+  .app-container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+  }
   .navLinks {
     padding:0 10px 0 10px;
   }
   a {
     font-size: 19px;
   }
+  /* sign up page CSS begins */
+  .sign-up-page {
+    color:black;
+    font-size: 16px;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .routes-container {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .routes-container h1 {
+    font-size: 20px;
+  }
+  .signup-div {
+    width: 70vw;
+  }
+
+  .sign-up-userName {
+    color:black;
+    display: flex;
+    margin-right: 73px;
+  
+  }
+  .sign-up-email {
+    color:black;
+    display: flex;
+    margin-right: 40px;
+  }
+  .sign-up-passWord {
+    color:black;
+    display: flex;
+    margin-right: 69px;
+  }
+  .sign-up-button {
+    color:black;
+    display: flex;
+    justify-content: center;
+  }
+  .account-already {
+    color: black;
+    display: flex;
+    justify-content: center;
+    padding-top: 12px;
+  }
+  .account-already a {
+    padding: 2.7px 0 0 2.7px;
+    font-size: 13.5px;
+    align-items: center;
+  }
+  .sign-up-button {
+    padding-top:3.5px;
+  }
+/* sign up page CSS end */
+
+/* log in page CSS start */
+
+  .login-div {
+    width: 70vw;
+  }
+  .routes-container {
+    display: flex;
+    justify-content: space-evenly;
+  }
+
+  .routes-container h1 {
+    font-size: 20px;
+  }
+  .login-email-input {
+    display: flex;
+    justify-content: center;
+    gap: 0px;
+    margin-right: 40px;
+  }
+  #email-login {
+    display: flex;
+    justify-content: center;
+  }
+  #password-login {
+    display: flex;
+    justify-content: center;
+  }
+  .login-page {
+    color: black;
+  }
+  .login-email {
+    display: flex;
+    justify-content: center;
+  }
+  .login-input {
+    display: flex;
+    justify-content: center;
+  }
+  .login-password-input {
+    display: flex;
+    gap: 0px;
+    margin-right: 70px;
+
+  /* Log in page CSS End */
 }
-/* Log in page CSS End */
+    
+}
+
 
 /* * {
   box-sizing: border-box;

@@ -64,7 +64,7 @@ export default function Signup(){
     <div className="sign-up-page">
         <h1> This is the signup page</h1>
         
-        <div>           
+        <div className="signup-div">           
              {/* <Form method="post"> */}
             {/* <Form method="post">
             {/* <Form method="post" action="/signup"> */}
