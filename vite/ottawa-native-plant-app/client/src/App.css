@@ -14,6 +14,12 @@ nav {
   border-bottom: 1px solid;
 }
 
+.nav a:hover {
+  background: green;
+  border-radius: 7px;
+  color: white;
+}
+
 .navLinks {
   padding-right: 7px;
   border-right: 1px solid;
@@ -118,6 +124,10 @@ footer h1 {
   display: flex;
   justify-content: center;
 }
+
+button:hover {
+  color: green;
+}
 .account-already {
   color: black;
   display: flex;
@@ -126,6 +136,11 @@ footer h1 {
 }
 .account-already a {
   padding: 2.5px 0 0 2.5px;
+}
+.account-already a:hover {
+background: white;
+color: green;
+border-radius: 7px;
 }
 .sign-up-button {
   padding-top:3.5px;
@@ -138,6 +153,7 @@ footer h1 {
   display: block;
   justify-content: center;
   gap: 47px;
+  padding: 2px;
 }
 #email-login {
   display: flex;
@@ -160,6 +176,7 @@ footer h1 {
 }
 .login-password-input {
   display: block;
+  padding: 2px;
 }
 
 
@@ -296,6 +313,16 @@ footer h1 {
   }
 }
 
+@media (min-width:600px) {
+  nav {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 125px;
+  }
+  li a.site-title {
+    font-size: 30px;
+  }
+}
 @media (min-width: 720px) {
   nav {
     display: flex;
@@ -419,7 +446,36 @@ footer h1 {
   /* Log in page CSS End */
 }  
 }
+
+@media (min-width: 820px) {
+  nav {
+      display: flex;
+      justify-content: flex-end;
+      gap: 160px;
+  }
+}
+@media (min-width: 800px) {
+  nav {
+      display: flex;
+      justify-content: flex-end;
+      gap: 150px;
+  }
+}
+
+@media (min-width: 912px) {
+  nav {
+      display: flex;
+      justify-content: flex-end;
+      gap: 205px;
+  }
+}
+
 @media (min-width: 1024px) {
+  nav {
+      display: flex;
+      justify-content: flex-end;
+      gap: 135px;
+  }
   a {
     font-size: 24px;
   }
@@ -538,10 +594,19 @@ footer h1 {
   }
 /* sign up page CSS end */
 }  
+
+@media (min-width: 1280px) {
+  nav {
+      display: flex;
+      justify-content: flex-end;
+      gap: 260px;
+  }
+}
 @media (min-width: 1440px) {
   li a.site-title {
     font-size: 70px;
     align-items: center;
+    padding-left: 15px;
 }
   nav {
     display: flex;
@@ -590,7 +655,7 @@ footer h1 {
       align-items: center;
   }
 }
-@media (min-width: 1920px) {
+@media (min-width: 1530px) {
     li a.site-title {
       font-size: 70px;
       align-items: center;
@@ -598,7 +663,7 @@ footer h1 {
     nav {
       display: flex;
       justify-content: flex-end;
-      gap: 470px;
+      gap: 265px;
   }
 }
 
